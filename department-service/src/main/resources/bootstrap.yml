@@ -1,0 +1,6 @@
+spring:
+  application:
+   name: department-service
+  cloud:
+   config:
+    server: http://localhost:8888

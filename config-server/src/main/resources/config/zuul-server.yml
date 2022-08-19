@@ -1,0 +1,15 @@
+server:
+  port: 8060
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: zuul-server
+zuul:
+  routes:
+    employee-service:
+      path: /employee-service/**
+      url: http://localhost:8090/

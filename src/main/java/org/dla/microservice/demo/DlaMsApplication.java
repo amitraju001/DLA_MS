@@ -1,0 +1,13 @@
+package org.dla.microservice.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DlaMsApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DlaMsApplication.class, args);
+	}
+
+}
