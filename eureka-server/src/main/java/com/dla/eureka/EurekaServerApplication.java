@@ -1,4 +1,4 @@
-package org.cpringcloud.prince.eurekaserver;
+package com.dla.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
