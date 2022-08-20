@@ -1,7 +1,7 @@
 package com.dla.org.controller;
 
-import client.DepartmentClient;
-import client.EmployeeClient;
+import com.dla.org.client.DepartmentClient;
+import com.dla.org.client.EmployeeClient;
 import com.dla.org.model.Organization;
 import com.dla.org.repository.OrganizationRepository;
 import org.slf4j.Logger;

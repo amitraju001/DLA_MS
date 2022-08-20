@@ -1,4 +1,4 @@
-package client;
+package com.dla.org.client;
 
 import com.dla.org.model.Employee;
 import org.springframework.cloud.openfeign.FeignClient;
