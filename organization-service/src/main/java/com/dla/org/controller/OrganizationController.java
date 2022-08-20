@@ -2,6 +2,7 @@ package com.dla.org.controller;
 
 import com.dla.org.client.DepartmentClient;
 import com.dla.org.client.EmployeeClient;
+import com.dla.org.model.Department;
 import com.dla.org.model.Organization;
 import com.dla.org.repository.OrganizationRepository;
 import org.slf4j.Logger;
@@ -45,7 +46,8 @@ public class OrganizationController {
 	public Organization findByIdWithDepartments(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
 		Organization organization = repository.findById(id);
-		organization.setDepartments(departmentClient.findByOrganization(organization.getId()));
+		List<Department> departments= departmentClient.findByOrganization(organization.getId());
+		organization.setDepartments(departments);
 		return organization;
 	}
 	

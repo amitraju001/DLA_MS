@@ -13,7 +13,9 @@ public class Department {
 	public Department() {
 		
 	}
-
+	public Department(String message) {
+	this.name=message;
+	}
 	public Department(Long organizationId, String name) {
 		super();
 		this.organizationId = organizationId;
