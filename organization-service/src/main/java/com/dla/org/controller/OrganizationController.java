@@ -5,11 +5,14 @@ import com.dla.org.client.EmployeeClient;
 import com.dla.org.model.Department;
 import com.dla.org.model.Organization;
 import com.dla.org.repository.OrganizationRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -43,6 +46,7 @@ public class OrganizationController {
 	}
 
 	@GetMapping("/{id}/with-departments")
+	@HystrixCommand(fallbackMethod = "callDepartmentServiceAndGetData_Fallback")
 	public Organization findByIdWithDepartments(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
 		Organization organization = repository.findById(id);
@@ -66,5 +70,13 @@ public class OrganizationController {
 		organization.setEmployees(employeeClient.findByOrganization(organization.getId()));
 		return organization;
 	}
-	
+	public Organization callDepartmentServiceAndGetData_Fallback(Long organizationId) {
+		 Organization organization =new Organization();
+		 System.out.println("Department Service is down!!! fallback route enabled...");
+		 List<Department> list=new ArrayList<>();
+		 list.add(new Department("CIRCUIT BREAKER ENABLED!!!No Response From Department Service at this moment. Service will be back shortly: " + new Date()));
+		organization.setDepartments(list);
+		return organization;
+		}
+
 }
