@@ -1,0 +1,5 @@
+spring:
+  application:
+   name: zuul-server-mobile
+  config:
+    server: http://localhost:8888

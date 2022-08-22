@@ -10,6 +10,7 @@ import org.dla.dept.repository.DepartmentRepository;
 import java.util.List;
 
 @RestController
+@RequestMapping("department-service")
 public class DepartmentController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);

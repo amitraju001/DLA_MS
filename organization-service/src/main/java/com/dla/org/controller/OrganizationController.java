@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@RequestMapping("organization-service")
 public class OrganizationController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationController.class);
@@ -64,6 +65,7 @@ public class OrganizationController {
 	}
 	
 	@GetMapping("/{id}/with-employees")
+	@HystrixCommand(fallbackMethod = "callEmployeeServiceAndGetData_Fallback")
 	public Organization findByIdWithEmployees(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
 		Organization organization = repository.findById(id);
@@ -78,5 +80,13 @@ public class OrganizationController {
 		organization.setDepartments(list);
 		return organization;
 		}
+	public Organization callEmployeeServiceAndGetData_Fallback(Long organizationId) {
+		Organization organization =new Organization();
+		System.out.println("Department Service is down!!! fallback route enabled...");
+		List<Department> list=new ArrayList<>();
+		list.add(new Department("CIRCUIT BREAKER ENABLED!!!No Response From Employee Service at this moment. Service will be back shortly: " + new Date()));
+		organization.setDepartments(list);
+		return organization;
+	}
 
 }
