@@ -1,0 +1,6 @@
+spring:
+  application:
+   name: dashboard-hystrix
+  cloud:
+   config:
+    server: http://localhost:8888
