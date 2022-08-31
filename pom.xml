@@ -24,6 +24,7 @@
 		<module>zuul-api-gateway</module>
 		<module>employee-service</module>
 		<module>department-service</module>
+		<module>dashboard-hystrix</module>
 		<module>organization-service</module>
 		<module>zuul-api-gateway-mobile</module>
 	</modules>

@@ -1,10 +1,10 @@
-package org.dla.microservice.demo;
+package com.dla.hystrix.dashboard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DlaMsApplicationTests {
+class DashboardHystrixApplicationTests {
 
 	@Test
 	void contextLoads() {

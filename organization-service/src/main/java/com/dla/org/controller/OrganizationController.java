@@ -5,7 +5,6 @@ import com.dla.org.client.EmployeeClient;
 import com.dla.org.model.Department;
 import com.dla.org.model.Organization;
 import com.dla.org.repository.OrganizationRepository;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,6 @@ public class OrganizationController {
 	}
 
 	@GetMapping("/{id}/with-departments")
-	@HystrixCommand(fallbackMethod = "callDepartmentServiceAndGetData_Fallback")
 	public Organization findByIdWithDepartments(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
 		Organization organization = repository.findById(id);
@@ -57,7 +55,6 @@ public class OrganizationController {
 	}
 	
 	@GetMapping("/{id}/with-departments-and-employees")
-	@HystrixCommand(fallbackMethod = "callDepartmentServiceAndGetData_Fallback")
 	public Organization findByIdWithDepartmentsAndEmployees(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
 		Organization organization = repository.findById(id);
@@ -66,7 +63,6 @@ public class OrganizationController {
 	}
 	
 	@GetMapping("/{id}/with-employees")
-	@HystrixCommand(fallbackMethod = "callDepartmentServiceAndGetData_Fallback")
 	public Organization findByIdWithEmployees(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
 		Organization organization = repository.findById(id);
